@@ -1,0 +1,50 @@
+---
+title: "Kinds of iris flowers by petal length and sepal length"
+author: "Arturo Penas Rial"
+date: "26/11/2020"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## scatter
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=5}
+library(dplyr)
+library(plotly)
+library(ggplot2)
+
+x <- list(title = "Sepal (Length)")
+y <- list(title = "Petal (Length)")
+
+plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, color=~iris$Species, mode='markers', type = "scatter") %>% 
+    layout(xaxis = x, yaxis = y, title = "Kinds of iris flowers by petal length and sepal length")
+```
+
+## scatter3d
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=5}
+library(plotly)
+
+x <- list(title = "Sepal (Length)")
+y <- list(title = "Petal (Length)")
+
+plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, z = ~Petal.Width,
+    type = "scatter3d", color=~iris$Species, mode='markers') %>% 
+    layout(xaxis = x, yaxis = y, title = "Kinds of iris flowers by petal length and sepal length")
+```
+
+## Summary
+
+- We will work with a well known dataset in data analysis called **Iris**.
+- The dataset is composed of 150 observations of flowers of the iris plant.
+- There are three kinds of iris flowers: virginica, setosa and versicolor.
+- The variables or attributes that are measured for each flower are: a) The type of flower as a categorical variable, b) The length and width of the petals in cm as numerical variables, c) The length and width of the sepal in cm as numerical variables,
+- 
+- The plot include kinds of iris flowers by petal length and sepal length for explore the data with cool features of **plotly**.
+
